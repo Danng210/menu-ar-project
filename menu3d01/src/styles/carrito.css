@@ -1,0 +1,241 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1{ font-size: 2.7rem; 
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-primario);
+}
+h2{ 
+  font-size: 1.8rem; 
+  font-weight: 500;
+  margin-top: 0%;
+  color: var(--color-primario);
+}
+.everything {
+    width: 85%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    /*gap: 1.5rem;*/
+  }
+  .head-container {
+    display: flex;
+    align-items: center;
+    margin-top: 2.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    /*min-width: 0;
+    flex-shrink: 1;*/
+    padding: 0;
+    
+  }
+  .back-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .back-button svg {
+    width: 3rem;
+    height: 3rem;
+    display: block; 
+    
+  }
+
+
+
+  /*------ ESTILOS DE LA CONFIRMACIÓN DEL PEDIDO ------*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  line-height: 1.2;
+  width: 80%;
+  background: var(--color-primario);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 500px;
+}
+#confirmacion-titulo {
+  color: var(--color-base);
+  font-size: 1.4rem;
+}
+#confirmacion-mensaje {
+  color: var(--color-base);
+  margin: 3%;
+}
+
+.botones-confirmacion button {
+  color: var(--color-base);
+
+  margin: 0 10px;
+  padding: 8px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.botones-confirmacion #btn-salir{
+  background-color: var(--color-primario);
+  border: 2px solid white;
+}
+.botones-confirmacion #btn-confirmar {
+  border: none;
+  font-weight: 500;
+  background-color: var(--color-acento);
+}
+
+
+
+  
+  .tarjeta-carrito{
+    background-color: var(--color-primario);
+    color: var(--color-base);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.1rem;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-radius: 0.625rem;
+  }
+
+  #n_txt{
+    font-size: 30px;
+    font-weight: 700;
+    padding: 5px;
+    margin: 5px;
+  }
+  #producto{
+    font-size: 0.8rem;
+    font-weight: 400;
+    padding: 5px;
+    text-align: left;
+    margin: 8px;
+  }
+
+  #precio{
+    font-size: 0.938rem;
+    font-weight: 400;
+    padding: 5px;
+    text-align: left;
+    margin: 8px;
+  }
+
+.trash-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin: 5px;
+  }
+  .trash-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    color: var(--color-base);
+  }
+
+.pref-container{
+    margin-top: 1.5rem;
+}
+
+#preferencias {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  background-color: #F3F3F3;
+  margin-top: 1rem;
+  border: none;
+  outline: none;
+  box-shadow: inset 2px 3px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  resize: none;  
+  font-family: 'Poppins', sans-serif;
+  
+}
+
+#total, #metodo{
+  margin-top: 1.1rem;
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+.metodos-pago {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.metodosagain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.metodukos {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F3F3F3;
+  border: none;
+  cursor: pointer;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+#metoduko1{
+  padding-top: 7px;/* top right bottom left */
+}
+.pedido-conteiner{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.boton-realizar-pedido{
+    background-color: #FF4919;
+    color: white;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 0.8rem 2.3rem;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', sans-serif;
+  
+}

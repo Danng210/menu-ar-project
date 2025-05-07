@@ -1,0 +1,322 @@
+
+body {
+  /* max-width: 800px !important; */
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
+}
+
+body.modo-ar {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+body:not(.modo-ar) {
+  margin: 0% 8% !important;
+  overflow: auto !important;
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+
+body:not(.modo-ar) .app-container {
+  margin-left: 0;
+  z-index: auto;
+}
+
+.modo-ar .ar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.modo-ar .video-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-end;
+    min-height: 100vh;
+    
+    pointer-events: none;
+    position: relative;
+    z-index: 10;
+    background: transparent;
+  }
+  
+  .app-container, .boton-añadir-carrito-otro,.boton-spiner-otro {
+    pointer-events: auto;
+  }
+  
+  
+  .ar-container {
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0; */
+
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    width: 100%;
+    pointer-events: none;
+
+  }
+  
+  
+  /* Contenedor del video */
+  .video-container {
+    /*width: 100%;
+    max-width: 500px; 
+    aspect-ratio: 9/16; 
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: #000;*/
+  
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  .video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  a-scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0; /* Cámara detrás */
+    pointer-events: none; /* No captura eventos */
+  }
+  .a-canvas {
+    pointer-events: none !important;
+  position: fixed !important;
+  }
+  
+  a-scene, a-scene .a-canvas, .a-canvas {
+    pointer-events: none !important;
+  }
+  
+  a-scene canvas {
+    pointer-events: none;
+  }
+  
+  /* Elemento de video */
+  .camera-view {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta el video sin distorsión */
+    transform: scaleX(-1); /* Espejo para cámara frontal */
+  }
+  
+  /* Botones */
+  .controls {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .control-button {
+    padding: 12px 24px;
+    background: #FF4917;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .control-button:hover {
+    background: #ce3106;
+  }
+  
+  /* Responsive para tablets/pantallas grandes */
+  @media (min-width: 768px) {
+    .video-container {
+      max-width: 700px;
+      aspect-ratio: 16/9; /* Relación horizontal en pantallas anchas */
+    }
+  }
+  
+  .container-botones-otro {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px var(--padding-horizontal);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 20px;
+  }
+  
+  .spinner-otro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  .action-group {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+  }
+  .boton-spiner-otro {
+    border: none;
+    background-color: var(--color-acento);
+    height: 70px; /* Reducido para móviles */
+    width: 70px;
+    border-radius: 20px;
+    font-size: 30px; /* Tamaño ajustable */
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-base);
+    transition: transform 0.2s;
+  }
+  
+  .boton-spiner-otro:active {
+    transform: scale(0.95);
+  }
+  
+  
+  .numero-otro {
+    font-weight: 600;
+    font-size: clamp(30px, 8vw, 50px); /* Responsive con clamp */
+    color: var(--color-base);
+    min-width: 50px;
+    text-align: center;
+  }
+  
+  .action-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .boton-añadir-carrito-otro {
+    border: none;
+    background-color: var(--color-acento);
+    border-radius: 25px;
+    font-size: clamp(16px, 4vw, 24px); /*Texto responsive */
+    color: var(--color-base);
+    cursor: pointer;
+    flex-grow: 1;
+    transition: transform 0.2s;
+    white-space: nowrap;
+  
+    padding: 20px 40px 20px 40px; /*ari der abj izq*/
+    font-weight: 600;
+    /*font-size: 40px; */
+    line-height: 1.2;
+  
+  }
+  
+  .boton-añadir-carrito-otro:active {
+    transform: scale(0.98);
+  }
+  
+  .boton-info-otro {
+    border: none;
+    background-color: var(--color-acento);
+    color: var(--color-base);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  
+  
+  
+  /* Responsive para móviles */
+  @media (max-width: 768px) {
+    .container-botones-otro {
+      grid-template-columns: 1fr;
+      row-gap: 20px;
+    }
+    .spinner-otro {
+      order: 1;
+    }
+    .action-group {
+      order: 2;
+    }
+  }
+  /* ----- Media Queries ----- */
+  /* Tablet */
+  @media (min-width: 768px) {
+    :root {
+      --padding-horizontal: 10%;
+    }
+    .boton-spiner-otro {
+      height: 90px;
+      width: 90px;
+      font-size: 40px;
+    }
+    .boton-añadir-carrito-otro {
+      padding: 20px 40px;
+      font-size: 2.3em;
+    }
+    .boton-info-otro {
+      width: 90px;
+      height: 90px;
+    }
+  }
+  
+  /* Desktop pequeño */
+  @media (min-width: 992px) {
+    .container-botones-otro {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .spinner-otro {
+      justify-content: flex-start;
+    }
+  }
+  
+  /* Pantallas grandes */
+  @media (min-width: 1200px) {
+    :root {
+      --padding-horizontal: 15%;
+    }
+  }
+  
+  
+  
+  

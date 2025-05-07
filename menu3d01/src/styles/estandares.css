@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+:root {
+    --color-base: #FFFFFF;
+    --color-primario: #161616;
+    --color-acento: #FF4919;
+    --color-secundario: #EBEBEB; /*#F3F3F3, #d3d2d2*/
+    --color-auxiliar: #FECEC0;
+    /* width: 100%;
+    max-width: 600px; */
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+.contenedor-contenido {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4;
+}
+
+*{
+    box-sizing: border-box;
+    font-family:"Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    /* margin: 0% 12%; */
+    max-width: 900px;
+    /* margin: 0% 8% 0% 8%;  ari der abj izq */
+}
+
+h1{ font-size: 2.7rem; 
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-primario);
+}
+.fondo-negro h1 {
+    font-size: 80px; 
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-primario);
+}
+h2{ 
+    font-size: 1.8rem; 
+  font-weight: 500;
+  margin-top: 0%;
+  color: var(--color-primario);
+}
+h3{ 
+    font-size: 45px; 
+    font-weight: 400;
+    margin-top: 0%;
+    color: var(--color-primario);
+}
+p{ 
+    /* font-size: 35px;  */
+    line-height: 1.4;
+    font-weight: 300;
+    color: var(--color-primario);
+}
+.fondo-negro p{
+    font-size: 26px;
+    line-height: 1.4;
+    font-weight: 200;
+}
+
+i{  font-size: 60px; }
+a{  
+    text-decoration: none; 
+    margin: 0%;
+}
+a, a:focus, a:active {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  
+span{
+    padding: 0%;
+    margin: 0%;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in both;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/*----- titulos universales ------ */
+
+.head-container {
+    display: flex;
+    /* align-items: left; */
+    /* margin-top: 1rem; */
+    margin-bottom: 0.5rem;
+    width: 100%;
+    /*min-width: 0;
+    flex-shrink: 1;*/
+    padding: 0;
+    
+  }
+
+  .back-button {
+    justify-content: flex-start; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 32px;
+  }
+  
+  .back-button svg {
+    width: 2rem;
+    height: 2rem;
+    display: block; 
+    color: var(--color-primario);
+    padding: 0%;
+    
+  }
+
+
+
+/*------ ESTILOS DEL "POP-UP" ------*/
+.toast {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    top: 22%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:  var(--color-acento);
+
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    width: 270px;
+    text-align: center
+  }
+  .toast svg {
+    margin-left: 3%;
+    margin-right: 10px;
+    color:  var(--color-base);
+    font-size: 1.8rem;
+  }
+  .toast p {
+    color:  var(--color-base);
+    font-size: 0.9rem;
+  }
+
+
+
+/*---------- BARRA DE NAVEG ----------*/
+/* #barra-nav{
+    width: 100%;
+    height: 500px;
+    background-color: var(--color-base);
+
+    position: fixed;
+    top: 89%;
+    bottom: 0;
+    z-index: 1000; 
+    left: 0%;   
+}
+#barra-nav .espacio-de-la-barra{
+    margin-left: 6%;
+    background-color: var(--color-base);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    
+    height: 180px;
+    width: 860px;
+    font-size: 2.3em;
+
+    border-radius: 30px 30px 30px 30px; /*izq-sup der-sup  der-inf izp-inf
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+.espacio-de-la-barra nav{
+    display: flex;
+    justify-content:center;
+    gap: 150px;
+
+}
+.espacio-de-la-barra a{   
+    color:var(--color-primario);
+    padding: 60px 0px 20px 0px;
+    text-decoration: none;
+} */
+
+
+
+
+
+
+
+
+/*---------- BARRA DE NAVEG ACTIVA ----------*/
+/* #barra-nav-activa{
+    width: 100%;
+    height: 500px;
+    background-color: var(--color-base);
+
+    position: fixed;
+    top: 89%;
+    bottom: 0;
+    z-index: 1000; 
+    left: 0%;   
+}
+#barra-nav-activa .espacio-de-la-barra-activa{
+    margin-left: 6%;
+    display:flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: var(--color-sec);
+    
+    height: 180px;
+    width: 860px;
+    padding-top: 60px;
+    font-size: 2.3em;
+
+    border-radius: 30px 30px 30px 30px;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+    padding: 50px 0px 20px 0px;
+    padding-top: 0%;
+}
+.espacio-de-la-barra-activa a{   
+    color:var(--color-primario);
+    text-decoration: none;
+    justify-items: center;
+}
+#barra-nav-activa  .pag-actual{  
+    font-weight: bold;
+    border-radius: 20px 20px 20px 20px; /*izq-sup der-sup  der-inf izp-inf
+    height: 120px;
+    background-color: var(--color-primario);
+    padding: 20px 30px 20px 30px;
+}
+
+.pag-actual {
+    margin-top: 30px;
+    display: flex;
+    gap: 8px; 
+}
+.pag-actual i,span{
+    color: var(--color-base);
+    margin: 0%;
+}
+
+#icono-activa{
+    font-size: 60px;
+}
+.pag-actual span{
+    padding-left: 15px;
+    font-size: 44px;
+    margin: 0%;
+    padding-top: 10px;
+}
+
+.espacio-de-la-barra-activa nav{
+    display: flex;
+    align-items:first baseline;
+    justify-content:center;
+    gap: 120px;
+} */
+
+
+
+
+
+
+
+.hamburger-menu {
+    position: fixed;
+    top: 2.7rem;
+    right: 7%;
+    z-index: 200;
+    color: var(--color-primario);
+    padding: 0%;
+}
+
+.hamburger-button {
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: var(--color-primario);
+    /* margin-top: 80px;
+    margin-right: 80px; */
+}
+.hamburger-button #icono-cerrar{
+    color: var(--color-secundario);
+    font-size: 30px;
+}.hamburger-button #icono-menu{
+    color: var(--color-primario);
+    font-size: 30px;
+}
+
+
+.menu {
+    position: fixed;
+    top: 0;
+    right: -75%;
+    width: 70%;
+    height: 100%;
+    background-color: var(--color-primario);
+    color: var(--color-base);
+    padding-top: 30px;
+    transition: right 0.3s ease;
+    /* box-shadow: -2px 0 10px rgba(0,0,0,0.5); */
+    z-index: 200; /* Menú encima del overlay */
+    border-radius: 14px 0px 0px 14px; /*izq-sup der-sup  der-inf izp-inf*/
+}
+
+.menu.open {
+    right: 0; 
+    z-index: 180;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 18%;
+}
+
+.menu ul h2 {
+    margin: 4% 0;
+    text-align: left;
+    padding-left: 10%;
+    padding: 3% 12%;
+    color: var(--color-base);
+}
+/* .menu ul svg{
+    margin-bottom: -2%;
+    font-size: 60px;
+} */
+
+.menu ul h2.active{
+    background-color: var(--color-acento);
+    width: 85%;
+    margin-left: 16px;
+    padding-left: 6.3%;
+    border-radius: 10px;
+}
+
+.menu ul h2 a {
+    text-decoration: none;
+    font-size: 22px;
+    display: block;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente */
+    z-index: 170; /* Debajo del menú */
+}
+.overlay {
+    opacity: 0;
+    animation: fadeIn 0.2s ease-in both;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+
+
