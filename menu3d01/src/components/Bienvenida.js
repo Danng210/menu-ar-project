@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-
 export default function Bienvenida() {
-const navigate = useNavigate(); // ✅ Esto solo puede ir dentro del componente
+const navigate = useNavigate();
 
 const redirigirPorID = async (idProducto) => {
     try {
@@ -31,12 +30,6 @@ return (
 
     <div className="anuncios-scrollh">
         <button  className="tarjeta-anuncio" onClick={() => redirigirPorID("prod-004")}>
-        {/* <div id="img-mientras-tanto">
-          <img
-            src="../assets/images/anuncio_proximamente.png"
-            alt={"Enchiladas Norteñas de Res"}
-          />
-        </div> */}
         </button>
         <div className="anuncio-img"></div>
     </div>

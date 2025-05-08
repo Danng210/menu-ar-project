@@ -4,13 +4,13 @@ import TipoPlato from '../components/TipoPlato';
 import '../styles/inicio.css';
 
 export default function Inicio() {
-    return(
-        <section className="fade-in">
-        <div className="contenedor-contenido">
-            <Bienvenida/>
-            <TipoPlato/>
-            <MenuHam/>
-        </div>
-        </section>
-    );
+return(
+    <section className="fade-in">
+    <div className="contenedor-contenido">
+        <Bienvenida/>
+        <TipoPlato/>
+        <MenuHam/>
+    </div>
+    </section>
+);
 }

@@ -1,5 +1,4 @@
 <?php
-// detalle_producto.php - Obtener detalles de un solo producto por nombre
 require_once 'db.php';
 header('Content-Type: application/json');
 

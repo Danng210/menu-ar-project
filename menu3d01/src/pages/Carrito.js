@@ -11,136 +11,133 @@ import ConfirmacionPedidoModal from '../components/ConfirmacionPedidoModal';
 import '../styles/carrito.css';
 
 export default function Carrito() {
-  const {
-    carrito,
-    preferencias,
-    setPreferencias,
-    metodoPago,
-    setMetodoPago,
-    total,
-    realizarPedido,
-    eliminarDelCarrito,
-    mostrarToast
-  } = useCarrito();
+const {
+  carrito,
+  preferencias,
+  setPreferencias,
+  metodoPago,
+  setMetodoPago,
+  total,
+  realizarPedido,
+  eliminarDelCarrito,
+  mostrarToast
+} = useCarrito();
 
-  const [mostrarModal, setMostrarModal] = useState(false);
-  const navigate = useNavigate();
+const [mostrarModal, setMostrarModal] = useState(false);
+const navigate = useNavigate();
 
-  const handleClick = () => {
-    if (carrito.length === 0) {
-      mostrarToast('El carrito está vacío');
-      return;
-    }
+const handleClick = () => {
+  if (carrito.length === 0) {
+    mostrarToast('El carrito está vacío');
+    return;
+  }
 
-    if (!metodoPago) {
-      mostrarToast('Debe seleccionar un método de pago');
-      return;
-    }
+  if (!metodoPago) {
+    mostrarToast('Debe seleccionar un método de pago');
+    return;
+  }
 
-    setMostrarModal(true);
-  };
+  setMostrarModal(true);
+};
 
-  const handleConfirmar = async () => {
-    const exito = await realizarPedido();
-    if (exito) {
-      navigate('/factura');
-    }
-  };
+const handleConfirmar = async () => {
+  const exito = await realizarPedido();
+  if (exito) {
+    navigate('/factura');
+  }
+};
 
-  const handleMetodoSeleccionado = (metodo) => {
-    setMetodoPago(metodo);
-  };
+const handleMetodoSeleccionado = (metodo) => {
+  setMetodoPago(metodo);
+};
 
-  return (
-    <div className="contenedor-contenido">
-      <MenuHam />
+return (
+<div className="contenedor-contenido">
+  <MenuHam />
 
-    <div className="head-container">
-      <Link to="/menu/entradas" className="back-button">
-        <FiChevronLeft />
-      </Link>
-      <h1>Carrito</h1>
+  <div className="head-container">
+    <Link to="/menu/entradas" className="back-button">
+      <FiChevronLeft />
+    </Link>
+    <h1>Carrito</h1>
+  </div>
+
+  {carrito.map((item) => (
+    <div className="tarjeta-carrito" key={item.id}>
+    <span id="n_txt">{item.cantidad}</span>
+    <span id="producto">{item.nombre}</span>
+    <span id="precio">${item.subtotal}</span>
+
+
+    <button className="trash-button"
+      onClick={() => eliminarDelCarrito(item.id)}
+    >
+      <GoTrash/>
+    </button>
     </div>
+  ))}
 
-      {carrito.map((item) => (
-        <div className="tarjeta-carrito" key={item.id}>
-          <span id="n_txt">{item.cantidad}</span>
-          <span id="producto">{item.nombre}</span>
-          <span id="precio">${item.subtotal}</span>
+  <div className="pref-container">
+  <label htmlFor="preferencias">¿Tienes alguna preferencia especial para tu pedido?</label>
+  <textarea
+      type="text"
+      id="preferencias"
+      value={preferencias}
+      onChange={(e) => setPreferencias(e.target.value)}
+      placeholder="Ejemplo: Sin cebolla, poco picante, etc."
+      rows={4}
+  />
+  </div>
 
+  <h2 id="total"><b>Total:</b> ${total}</h2>
 
-          <button className="trash-button"
-            onClick={() => eliminarDelCarrito(item.id)}
-          >
-            <GoTrash/>
-          </button>
-        </div>
-      ))}
+  <div className="metodo_pago">
+  <h2 id="metodo">Escoja método de pago</h2>
 
-      <div className="pref-container">
-        <label htmlFor="preferencias">¿Tienes alguna preferencia especial para tu pedido?</label>
-        <textarea
-            type="text"
-            id="preferencias"
-            value={preferencias}
-            onChange={(e) => setPreferencias(e.target.value)}
-            placeholder="Ejemplo: Sin cebolla, poco picante, etc."
-            rows={4}
-        />
-      </div>
+  <div className="metodos-pago">
 
-      <h2 id="total"><b>Total:</b> ${total}</h2>
+  <span className="metodosagain">
+  <button className='metodukos' id='metoduko1'
+    key={"Efectivo"}
+    onClick={() => handleMetodoSeleccionado("Efectivo")}
+    style={{
+      backgroundColor: metodoPago === "Efectivo" ? '#ccc' : 'white',
+      border: '1px solid #aaa',
+      margin: '0.5rem'
+    }}
+  >  <BsCashCoin /> </button>
+      <span>Efectivo</span>
+  </span>
 
-      <div className="metodo_pago">
-      <h2 id="metodo">Escoja método de pago</h2>
+  <span className="metodosagain">
+  <button className='metodukos'
+      key={"Tarjeta"}
+      onClick={() => handleMetodoSeleccionado("Tarjeta")}
+      style={{
+        backgroundColor: metodoPago === "Tarjeta" ? '#ccc' : 'white',
+        border: '1px solid #aaa',
+        margin: '0.5rem'
+      }}
+    >  <GrCreditCard/> </button>
+    <span>Tarjeta</span>
+  </span>
+</div>
+</div>
 
-      <div className="metodos-pago">
+<div className="pedido-conteiner">
+  <button className="boton-realizar-pedido" onClick={handleClick}>
+    <span>Realizar pedido</span>
+  </button>
+</div>
 
-      <span className="metodosagain">
-      <button className='metodukos' id='metoduko1'
-            key={"Efectivo"}
-            onClick={() => handleMetodoSeleccionado("Efectivo")}
-            style={{
-              backgroundColor: metodoPago === "Efectivo" ? '#ccc' : 'white',
-              border: '1px solid #aaa',
-              margin: '0.5rem'
-            }}
-          >  <BsCashCoin />  
-          </button>
-          <span>Efectivo</span>
-      </span>
-
-        <span className="metodosagain">
-        <button className='metodukos'
-            key={"Tarjeta"}
-            onClick={() => handleMetodoSeleccionado("Tarjeta")}
-            style={{
-              backgroundColor: metodoPago === "Tarjeta" ? '#ccc' : 'white',
-              border: '1px solid #aaa',
-              margin: '0.5rem'
-            }}
-          >  <GrCreditCard/>  
-          </button>
-          <span>Tarjeta</span>
-        </span>
-
-      </div>
-      </div>
-
-    <div className="pedido-conteiner">
-      <button className="boton-realizar-pedido" onClick={handleClick}>
-        <span>Realizar pedido</span>
-      </button>
-    </div>
-
-      <ConfirmacionPedidoModal
-        visible={mostrarModal}
-        onConfirmar={() => {
-          setMostrarModal(false);
-          handleConfirmar();
-        }}
-        onCancelar={() => setMostrarModal(false)}
-      />
-    </div>
-  );
+<ConfirmacionPedidoModal
+  visible={mostrarModal}
+  onConfirmar={() => {
+    setMostrarModal(false);
+    handleConfirmar();
+  }}
+  onCancelar={() => setMostrarModal(false)}
+/>
+</div>
+);
 }

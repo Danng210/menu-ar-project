@@ -9,7 +9,6 @@ if (!isset($_GET['id'])) {
 
 $id_pedido = $conexion->real_escape_string($_GET['id']);
 
-// Verificar formato del ID
 if (!preg_match('/^ped-\d+$/', $id_pedido)) {
     http_response_code(400);
     echo json_encode(["error" => "Formato de ID inválido"]);

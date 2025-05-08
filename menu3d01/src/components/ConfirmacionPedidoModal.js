@@ -1,9 +1,7 @@
-// components/ConfirmacionPedidoModal.js
 import React from 'react';
 
 export default function ConfirmacionPedidoModal({ visible, onConfirmar, onCancelar }) {
   if (!visible) return null;
-
 
   return (
     <div className="modal-overlay" id="confirmacion-pedido-overlay">

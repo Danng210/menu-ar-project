@@ -1,6 +1,6 @@
 <?php
 require_once 'db.php';
-require_once 'pedido.php'; // Asegúrate de tener aquí la función crearPedido() si la usas.
+require_once 'pedido.php';
 
 header('Content-Type: application/json');
 
@@ -8,7 +8,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Leer datos JSON
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
 
@@ -27,30 +26,9 @@ if (!$metodo_pago) {
   exit;
 }
 $idPedido = 'ped-' . time() ;
-
-// Función para generar ID único tipo 'grupo-XX'
-// function generarNuevoId($pdo, $prefijo, $tabla, $columna) {
-//   $stmt = $pdo->prepare("SELECT $columna FROM $tabla WHERE $columna LIKE :prefijo ORDER BY $columna DESC LIMIT 1");
-//   $stmt->execute([':prefijo' => "$prefijo-%"]);
-//   $ultimo = $stmt->fetchColumn();
-
-//   if ($ultimo) {
-//     $numero = intval(str_replace("$prefijo-", "", $ultimo));
-//     $nuevoNumero = $numero + 1;
-//   } else {
-//     $nuevoNumero = 1;
-//   }
-
-//   return "$prefijo-$nuevoNumero";
-// }
-
 try {
   $pdo->beginTransaction();
 
-  // Generar nuevo ID para el pedido
-  // $idPedido = generarNuevoId($pdo, 'pedido', 'pedido', 'ID_PEDIDO');
-
-  // Insertar pedido
   $stmtPedido = $pdo->prepare("INSERT INTO pedido (ID_PEDIDO, TOTAL_PEDIDO, FECHA_PEDIDO, PREFERENCIAS_PEDIDO, METODO_PAGO)
                                VALUES (:id, :total, NOW(), :preferencias, :metodo_pago)");
   $stmtPedido->execute([
@@ -60,7 +38,6 @@ try {
     ':metodo_pago' => $metodo_pago
   ]);
 
-  // Preparar inserción de detalle
   $stmtDetalle = $pdo->prepare("
   INSERT INTO detalle_pedido 
   (ID_DETALLE_PEDIDO, FK_ID_PEDIDO, FK_ID_PRODUCTO, CANTIDAD, SUBTOTAL)
@@ -82,9 +59,7 @@ foreach ($carrito as $index => $item) {
 
   $pdo->commit();
 
-  
-  // Guardar el ID del pedido en localStorage (puedes usarlo en el frontend)
-  echo json_encode(['success' => true, 'id_pedido' => $idPedido]);
+    echo json_encode(['success' => true, 'id_pedido' => $idPedido]);
 } catch (PDOException $e) {
   $pdo->rollBack();
   echo json_encode(['success' => false, 'message' => $e->getMessage()]);
